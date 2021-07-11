@@ -5,7 +5,7 @@ const schema = require("../utilities/Validation/schema");
 const catchAsync = require('../utilities/catchAsync');
 const AppError = require('../utilities/appError');
 
-exports.postAnalytics = catchAsync (async (req, res, next) => {
+exports.postAnalytics = catchAsync(async(req, res, next) => {
   const { ip, coordinates } = req.body;
   const validator = await schema.validateAsync(req.body);
   let reportAnalytics = [];
@@ -16,7 +16,7 @@ exports.postAnalytics = catchAsync (async (req, res, next) => {
       "utf-8"
     );
     // converts the file to JavaScript Object
-    reportAnalytics = JSON.parse(reportFile);
+    // reportAnalytics = JSON.parse(reportFile);
   } else {
     // if file does not exist
     return next(new AppError("File does not exist", 404));
